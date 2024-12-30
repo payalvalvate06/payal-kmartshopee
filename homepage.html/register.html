@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>Register</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url(bg1.webp) no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      h2 {
+        text-align: center;
+      }
+      #rlogo {
+        padding-left: 200px;
+      }
+      form {
+        width: 500px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      button {
+        margin-left: 200px;
+      }
+      #gologin {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="signup-form">
+      <div id="rlogo">
+        <img src="logo.png" height="100px" width="100px" />
+      </div>
+      <h2>Register</h2>
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+      <button type="submit">Register</button><br />
+      <div id="gologin">
+        <a href="index.html">Go to Login</a>
+      </div>
+    </form>
+
+    <script>
+      // Function to check if the username already exists in localStorage
+      function userExists(username) {
+        const user = localStorage.getItem(username);
+        return user !== null;
+      }
+
+      // Handle form submission
+      document
+        .getElementById("signup-form")
+        .addEventListener("submit", function(event) {
+          event.preventDefault(); // Prevent the form from submitting
+
+          const username = document.getElementById("username").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const confirmPassword = document.getElementById("confirmPassword").value;
+
+
+          // Check if the passwords match
+          if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+          }
+
+          // Create a user object
+          const user = {
+            username: username,
+            email: email,
+            password: password, // Note: Passwords should not be stored in plain text in a real application!
+          };
+
+          // Store user data in local storage with the username as the key
+          localStorage.setItem(username, JSON.stringify(user));
+
+          alert("Sign-up successful! Data stored locally.");
+          window.location.href = "index.html"; // Redirect to login page
+        });
+    </script>
+  </body>
+</html>

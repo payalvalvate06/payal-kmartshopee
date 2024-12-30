@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+header {
+    background-color:rgb(175, 105, 116);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .logo h1 {
+    font-size: 24px;
+    color:white;
+    font-family: cursive;
+}
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+header nav ul li {
+    margin-left: 20px;
+}
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.hero {
+    background-image: url('deco.webp');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+main {
+    padding: 20px;
+}
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.product-item {
+    background-color: rgb(204, 175, 181);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.product-item:hover {
+    transform: translateY(-10px);
+}
+.product-item img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+}
+.product-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.product-item p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #e74c3c;
+}
+.product-item button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.product-item button:hover {
+    background-color: #27ae60;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    header .logo h1 {
+        font-size: 22px;
+    }
+    header nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    header nav ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    header nav ul li a {
+        font-size: 16px;
+    }
+    .hero {
+        height: 250px;
+    }
+    main {
+        padding: 20px;
+    }
+    .product-list {
+        grid-template-columns: 1fr 1fr; /* 2 columns for mobile */
+    }
+    .product-item {
+        padding: 15px;
+    }
+    .product-item img {
+        max-width: 150px;
+    }
+    .product-item h3 {
+        font-size: 16px;
+    }
+    .product-item p {
+        font-size: 14px;
+    }
+    .product-item button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    footer {
+        padding: 15px;
+    }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+    header {
+        padding: 20px 40px;
+    }
+    header .logo h1 {
+        font-size: 24px;
+    }
+    header nav ul {
+        flex-direction: row;
+    }
+    header nav ul li {
+        margin-left: 20px;
+    }
+    .hero {
+        height: 300px;
+    }
+    main {
+        padding: 25px;
+    }
+    .product-list {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for laptops */
+    }
+    .product-item {
+        padding: 18px;
+    }
+    .product-item img {
+        max-width: 180px;
+    }
+    .product-item h3 {
+        font-size: 17px;
+    }
+    .product-item p {
+        font-size: 15px;
+    }
+    .product-item button {
+        font-size: 15px;
+        padding: 9px 18px;
+    }
+    footer {
+        padding: 18px;
+    }
+}

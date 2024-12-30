@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Fashion Store</title>
+    <link rel="stylesheet" href="men.css">
+    <style>
+        /* Adding the styles for cart popup, payment modal, etc. */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1974db;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo h1 {
+            font-size: 32px;
+            color: white;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+         .buy-now {
+            margin-top: 20px;
+         }
+        /* Cart Popup Styles */
+        .cart-popup {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 50%;
+            background-color: #fff;
+            box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-popup h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-items li {
+            margin-bottom: 10px;
+        }
+
+        .cart-items button {
+            background-color: #f02b2b;
+            border: none;
+            color: white;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .cart-items button:hover {
+            background-color: #920808;
+        }
+
+        .cart-popup .close-btn {
+            background-color: #4f0af0;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .cart-popup .close-btn:hover {
+            background-color: #461f33;
+        }
+
+        /* Payment Modal Styles */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 50px;
+            left: 50px;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-content {
+            background-color: rgb(152, 150, 175);
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .payment-content input {
+            margin: 10px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .payment-content button {
+            padding: 10px 15px;
+            background-color: #1ec526;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .payment-content button:hover {
+            background-color: #e71b1b;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h1>Men's Fashion</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="page1.html">Home</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="#">Sale</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<section class="hero">
+    <div class="hero-content">
+        <img src="menbanner.gif" alt="Men's Fashion Banner">
+    </div>
+</section>
+<main>
+    <section class="product-list">
+        <div class="product-item" data-name="Basic T-Shirt" data-price="600">
+            <img src="tshirt.jpg" alt="T-Shirt">
+            <h3>Basic T-Shirt</h3>
+            <p>Under Rs. 600</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-item" data-name="Winter Jacket" data-price="800">
+            <img src="jacket.jpg" alt="Jacket">
+            <h3>Winter Jacket</h3>
+            <p>Under Rs.800</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-item" data-name="Running Shoes" data-price="900">
+            <img src="shoes.jpg" alt="Shoes">
+            <h3>Running Shoes</h3>
+            <p>Under Rs. 900</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-item" data-name="Denim Jeans" data-price="999">
+            <img src="jeans.jpg" alt="Jeans">
+            <h3>Denim Jeans</h3>
+            <p>Under Rs. 999</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-item" data-name="Leather Watch" data-price="1000">
+            <img src="watch.jpg" alt="Watch">
+            <h3>Leather Watch</h3>
+            <p>Under Rs. 1000</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-item" data-name="Baseball Cap" data-price="500">
+            <img src="cap.jpg" alt="Cap">
+            <h3>Baseball Cap</h3>
+            <p>Under Rs. 500</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+    </section>
+</main>
+<div class="cart-popup" id="cart-popup">
+    <h3>Your Cart</h3>
+    <ul class="cart-items" id="cart-items"></ul>
+    <button class="close-btn" onclick="closeCart()">Close Cart</button>
+</div>
+<div id="payment-modal" class="payment-modal">
+    <div class="payment-content">
+        <h2>Payment Information</h2>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required><br>
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" placeholder="Enter your card number" required><br>
+        <label for="card-expiry">Expiry Date:</label>
+        <input type="text" id="card-expiry" placeholder="MM/YY" required><br>
+        <label for="card-cvc">CVC:</label>
+        <input type="text" id="card-cvc" placeholder="CVC" required><br>
+        <button id="process-payment">Proceed to Payment</button>
+        <button id="close-payment-modal">Close</button>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 Men's Fashion Store. All rights reserved.</p>
+</footer>
+<script>
+    let cart = [];
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCartDisplay();
+        openCart();  // Open the cart immediately after adding an item
+    }
+    function updateCartDisplay() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = '';
+        cart.forEach((item, index) => {
+            const cartItem = document.createElement('li');
+            cartItem.textContent = `${item.name} - Rs. ${item.price}`;
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.onclick = () => removeItem(index);
+            cartItem.appendChild(removeButton);
+            cartItemsContainer.appendChild(cartItem);
+        });
+    }
+    function removeItem(index) {
+        cart.splice(index, 1);
+        updateCartDisplay();
+    }
+    function openCart() {
+        document.getElementById('cart-popup').style.display = 'block';
+    }
+    function closeCart() {
+        document.getElementById('cart-popup').style.display = 'none';
+    }
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const product = button.closest('.product-item');
+            const name = product.getAttribute('data-name');
+            const price = product.getAttribute('data-price');
+            addToCart(name, price);
+        });
+    });
+    const buyNowButtons = document.querySelectorAll('.buy-now');
+    buyNowButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            openPaymentModal();
+        });
+    });
+    function openPaymentModal() {
+        document.getElementById('payment-modal').style.display = 'flex';
+    }
+    document.getElementById('close-payment-modal').addEventListener('click', () => {
+        document.getElementById('payment-modal').style.display = 'none';
+    });
+    document.getElementById('process-payment').addEventListener('click', () => {
+        alert('Payment processed successfully!');
+        document.getElementById('payment-modal').style.display = 'none';
+    });
+</script>
+
+</body>
+</html>

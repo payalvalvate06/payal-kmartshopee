@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Product Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1974db;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo h1 {
+            font-size: 32px;
+            color: white;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+         .copyright {
+            text-align: center;
+            background-color: rgb(221, 210, 210);
+         }
+        /* Product Section */
+        .product-list {
+            padding: 40px 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            background-color: white;
+        }
+
+        .product-item {
+            background-color: #80a2be;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .product-item h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .product-item p {
+            font-size: 16px;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        .add-to-cart, .buy-now {
+            background-color: #f05656;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .buy-now {
+            background-color: green;
+            margin-top: 10px;
+        }
+
+        .add-to-cart:hover, .buy-now:hover {
+            background-color: #cf2020;
+        }
+        /* Cart Popup Styles */
+        .cart-popup {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 50%;
+            background-color: #977676;
+            box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .cart-popup h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cart-items li {
+            margin-bottom: 10px;
+        }
+        .cart-items button {
+            background-color: #f73f3f;
+            border: none;
+            color: white;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .cart-items button:hover {
+            background-color: #ff4040;
+        }
+
+        .cart-popup .close-btn {
+            background-color: #3ee985;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .cart-popup .close-btn:hover {
+            background-color: #e21f1f;
+        }
+
+        /* Payment Modal Styles */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 50px;
+            left: 50px;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-content {
+            background-color: rgb(209, 223, 231);
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .payment-content input {
+            margin: 10px 0;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .payment-content button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .payment-content button:hover {
+            background-color: #f32626;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h1>Beauty Store</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="page1.html">Home</a></li>
+            <li><a href="beauty.html">Beauty</a></li>
+            <li><a href="women.html">women</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<section class="hero">
+    <div class="hero-content">
+        <img src="skincvare.gif">
+    </div>
+</section>
+<main>
+    <section class="product-list">
+        <div class="product-item" data-name="Face Serum" data-price="29.99">
+            <img src="faceserum.avif" alt="Product 1">
+            <h3>Face Serum</h3>
+            <p>RS.600</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product-item" data-name="Moisturizing Cream" data-price="45.00">
+            <img src="cream.jpg" alt="Product 2">
+            <h3>Moisturizing Cream</h3>
+            <p>RS.200</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product-item" data-name="Makeup Kit" data-price="19.99">
+            <img src="makeupkit.jpg" alt="Product 3">
+            <h3>Makeup Kit</h3>
+            <p> RS.1000</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product-item" data-name="Hair Shampoo" data-price="35.50">
+            <img src="shampoo.jpg" alt="Product 4">
+            <h3>Hair Shampoo</h3>
+            <p>RS.700</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product-item" data-name="Perfume" data-price="55.99">
+            <img src="perfume.jpg" alt="Product 5">
+            <h3>Perfume</h3>
+            <p>RS.900</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="product-item" data-name="Eye Cream" data-price="39.00">
+            <img src="eyecream.jpg" alt="Product 6">
+            <h3>Eye Cream</h3>
+            <p>RS.300</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+    </section>
+</main>
+
+<!-- Cart Popup -->
+<div class="cart-popup" id="cart-popup">
+    <h3>Your Cart</h3>
+    <ul class="cart-items" id="cart-items"></ul>
+    <button class="close-btn" onclick="closeCart()">Close Cart</button>
+</div>
+
+<!-- Payment Modal -->
+<div id="payment-modal" class="payment-modal">
+    <div class="payment-content">
+        <h2>Payment Information</h2>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required><br>
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" placeholder="Enter your card number" required><br>
+        <label for="card-expiry">Expiry Date:</label>
+        <input type="text" id="card-expiry" placeholder="MM/YY" required><br>
+        <label for="card-cvc">CVC:</label>
+        <input type="text" id="card-cvc" placeholder="CVC" required><br>
+        <button id="process-payment">Proceed to Payment</button>
+        <button id="close-payment-modal">Close</button>
+    </div>
+</div>
+
+<footer>
+    <div class="copyright">
+        © 2023 www.solshopee.com. All rights reserved.
+    </div>
+</footer>
+
+<script>
+    let cart = [];
+
+    // Function to add item to cart
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCartDisplay();
+        openCart();  // Open the cart immediately after adding an item
+    }
+    // Function to update the cart display
+    function updateCartDisplay() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = '';
+        cart.forEach((item, index) => {
+            const cartItem = document.createElement('li');
+            cartItem.textContent = `${item.name} - $${item.price}`;
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.onclick = () => removeItem(index);
+            cartItem.appendChild(removeButton);
+            cartItemsContainer.appendChild(cartItem);
+        });
+    }
+    // Function to remove item from cart
+    function removeItem(index) {
+        cart.splice(index, 1);
+        updateCartDisplay();
+    }
+    // Function to open the cart popup
+    function openCart() {
+        document.getElementById('cart-popup').style.display = 'block';
+    }
+    // Function to close the cart popup
+    function closeCart() {
+        document.getElementById('cart-popup').style.display = 'none';
+    }
+    // Add to Cart Event Listeners
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const product = button.closest('.product-item');
+            const name = product.getAttribute('data-name');
+            const price = product.getAttribute('data-price');
+            addToCart(name, price);
+        });
+    });
+    // Buy Now Event Listener
+    const buyNowButtons = document.querySelectorAll('.buy-now');
+    buyNowButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            openPaymentModal();
+        });
+    });
+
+    // Open Payment Modal
+    function openPaymentModal() {
+        document.getElementById('payment-modal').style.display = 'flex';
+    }
+
+    // Close Payment Modal
+    document.getElementById('close-payment-modal').addEventListener('click', () => {
+        document.getElementById('payment-modal').style.display = 'none';
+    });
+
+    // Payment processing (simulation)
+    document.getElementById('process-payment').addEventListener('click', () => {
+        alert('Payment processed successfully!');
+        document.getElementById('payment-modal').style.display = 'none';
+    });
+</script>
+</body>
+</html>

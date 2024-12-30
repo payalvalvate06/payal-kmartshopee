@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="login.css"> <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="wrapper">
+    <form id="signup-form">
+      <div class="logo">
+        <img src="logo.png" alt="Kmart Logo">
+      </div>
+      <h1>Welcome to Kmart</h1>
+      <h2>Login</h2>
+      <div class="input-box">
+        <input type="text" id="username" placeholder="Username" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="email" id="email" placeholder="Email" required> 
+        <i class='bx bxs-envelope'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" id="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox" id="remember"> Remember Me</label>
+        <a href="#">Forgot Password</a>
+      </div>
+      <button type="submit" class="btn">Login</button> 
+      <div class="register-link">
+        <p>Don't have an account? <a href="register.html">Register</a></p>
+      </div>
+    </form>
+  </div>
+  <script>
+    document.getElementById("signup-form").addEventListener("submit", function(event) { 
+      event.preventDefault(); // Prevent the form from submitting
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const storedUser = localStorage.getItem(username);
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        if (parsedUser.password === password) {
+          alert("Login successful!");
+          window.location.href = "page1.html";
+        } else {
+          alert("Incorrect password. Please try again.");
+        }
+      } else {
+        alert("No user found with this username. Please register first.");
+      }
+    });  </script>
+</body>
+</html>
